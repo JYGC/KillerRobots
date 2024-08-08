@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ulWsoOV/j5PIZfcUFsdhszaacYgycy0X+W/UazE6c4ZDU5MAXoGMsyN1wFCZqoQgTbHfrGcviDrM8nwle+v4nQ==",
+  "success": true,
+  "projectFilePath": "/home/junying/Source/KillerRobots/KillerRobots.fsproj",
+  "expectedPackageFiles": [
+    "/home/junying/.nuget/packages/fsharp.core/7.0.0/fsharp.core.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

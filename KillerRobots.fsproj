@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Models/Player.fs" />
+    <Compile Include="Models/Robot.fs" />
+    <Compile Include="Models/Board.fs" />
+    <Compile Include="Models/GameState.fs" />
+    <Compile Include="Tools/ScreenTools.fs" />
+    <Compile Include="Screen.fs" />
+    <Compile Include="Tools/PositionTools.fs" />
+    <Compile Include="Actions/PlayerActions.fs" />
+    <Compile Include="Actions/RobotActions.fs" />
+    <Compile Include="Actions/GameStateActions.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
