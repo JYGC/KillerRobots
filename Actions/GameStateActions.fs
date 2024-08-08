@@ -11,8 +11,8 @@ module GameStateActions =
 
     let numberOfOnlineRobots =
       gameState.Robots
-        |> List.filter(fun r -> r.Status = RobotStatus.Online)
-        |> List.length
+      |> List.filter(fun r -> r.Status = RobotStatus.Online)
+      |> List.length
 
     if gameState.Player.Status = PlayerStatus.Dead then
       ScreenTools.printLostMessage gameState
@@ -68,5 +68,5 @@ module GameStateActions =
     let player = makePlayer board robots random
     
     gotoNextGameState (new GameState(board, robots, player))
-      |> ignore
+    |> ignore
     Console.CursorVisible <- true

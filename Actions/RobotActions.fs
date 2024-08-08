@@ -37,7 +37,7 @@ module RobotActions =
   let getNewRobotStatus (newRobotPosition: (int * int)) (destroyedRobotPositions: (int * int) list) =
     let isRobotDestroyed =
       destroyedRobotPositions
-        |> List.contains(newRobotPosition)
+      |> List.contains(newRobotPosition)
     if isRobotDestroyed then
       RobotStatus.Offline
     else
@@ -50,21 +50,21 @@ module RobotActions =
   let getNextRobotStates (userKeyPress: ConsoleKey) (oldGameState: GameState) =
     let nextRobotPositions =
       oldGameState.Robots
-        |> List.map(fun r ->
-          getNextRobotPosition
-            userKeyPress
-            oldGameState
-            r)
+      |> List.map(fun r ->
+        getNextRobotPosition
+          userKeyPress
+          oldGameState
+          r)
     let destroyedRobotPositions =
       nextRobotPositions
-        |> Seq.countBy(fun p -> p)
-        |> Seq.filter(fun pc ->
-          let (_, count) = pc
-          count > 1)
-        |> Seq.map(fun pc ->
-          let (position, _) = pc
-          position)
-        |> Seq.toList
+      |> Seq.countBy(fun p -> p)
+      |> Seq.filter(fun pc ->
+        let (_, count) = pc
+        count > 1)
+      |> Seq.map(fun pc ->
+        let (position, _) = pc
+        position)
+      |> Seq.toList
     nextRobotPositions
-      |> List.map(fun p ->
-        getNextRobotState p destroyedRobotPositions)
+    |> List.map(fun p ->
+      getNextRobotState p destroyedRobotPositions)

@@ -15,23 +15,23 @@ type Board() =
 
   member private this.GetTopWallCoordinates = 
     this.ValidXCoordinates
-      |> List.map(fun x -> (x, this.TopWallYCoordinate))
+    |> List.map(fun x -> (x, this.TopWallYCoordinate))
 
   member private this.GetBottomWallCoordinates = 
     this.ValidXCoordinates
-      |> List.map(fun x -> (x, this.BottomWallYCoordinate))
+    |> List.map(fun x -> (x, this.BottomWallYCoordinate))
 
   member private this.GetLeftWallCoordinates = 
     this.ValidYCoordinates
-      |> List.map(fun y -> (this.LeftWallXCoordinate, y))
+    |> List.map(fun y -> (this.LeftWallXCoordinate, y))
 
   member private this.GetRightWallCoordinates = 
     this.ValidYCoordinates
-      |> List.map(fun y -> (this.RightWallXCoordinate, y))
+    |> List.map(fun y -> (this.RightWallXCoordinate, y))
 
   member this.GetWallCoordinates =
     List.empty
-      |> List.append this.GetTopWallCoordinates
-      |> List.append this.GetBottomWallCoordinates
-      |> List.append this.GetLeftWallCoordinates
-      |> List.append this.GetRightWallCoordinates
+    |> List.append this.GetTopWallCoordinates
+    |> List.append this.GetBottomWallCoordinates
+    |> List.append this.GetLeftWallCoordinates
+    |> List.append this.GetRightWallCoordinates

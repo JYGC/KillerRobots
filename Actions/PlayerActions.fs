@@ -11,8 +11,8 @@ module PlayerActions =
       PositionTools.getRandomY oldGameState.Board random)
     let newPositionIsRobot =
       oldGameState.Robots
-        |> List.map(fun r -> r.Position)
-        |> List.contains(playerTeleportPosition)
+      |> List.map(fun r -> r.Position)
+      |> List.contains(playerTeleportPosition)
     if newPositionIsRobot then
       getPlayerTeleportPosition
         random
@@ -33,8 +33,9 @@ module PlayerActions =
   let private getPlayerStatus (newRobetStates: Robot list) (newPlayerPosition) =
     let hasRobotKilledPlayer =
       newRobetStates
-        |> List.map(fun r -> r.Position)
-        |> List.contains newPlayerPosition
+      |> List.filter(fun r -> r.Status = RobotStatus.Online)
+      |> List.map(fun r -> r.Position)
+      |> List.contains newPlayerPosition
     match hasRobotKilledPlayer with
     | true -> PlayerStatus.Dead
     | _ -> PlayerStatus.Alive
@@ -42,9 +43,14 @@ module PlayerActions =
   let getPlayerPosition (oldGameState: GameState) (newProposedPlayerPosition) =
     let hasPlayerHitWall =
       oldGameState.Board.GetWallCoordinates
-        |> List.contains newProposedPlayerPosition
-    
-    if hasPlayerHitWall then
+      |> List.contains newProposedPlayerPosition
+    let hasPlayerHitOfflineRobot =
+      oldGameState.Robots
+      |> List.filter(fun r -> r.Status = RobotStatus.Offline)
+      |> List.map(fun r -> r.Position)
+      |> List.contains newProposedPlayerPosition
+
+    if hasPlayerHitWall || hasPlayerHitOfflineRobot then
       oldGameState.Player.Position
     else
       newProposedPlayerPosition
