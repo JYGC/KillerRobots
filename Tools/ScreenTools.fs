@@ -5,7 +5,7 @@ module ScreenTools =
   open System
 
   let drawObjects ((x, y): int * int) (color: ConsoleColor) =
-    Console.SetCursorPosition( x, y)
+    Console.SetCursorPosition(x, y)
     Console.BackgroundColor <- color
     Console.Write(" ")
     Console.BackgroundColor <- ConsoleColor.Black
