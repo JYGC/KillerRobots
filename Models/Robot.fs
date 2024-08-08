@@ -1,7 +1,7 @@
 namespace KillerRobots.Models
 
 type RobotStatus =
-  | Destroyed = 0
+  | Offline = 0
   | Online = 1
 
 type Robot(position: int * int, status: RobotStatus) =

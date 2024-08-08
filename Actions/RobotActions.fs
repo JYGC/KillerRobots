@@ -39,7 +39,7 @@ module RobotActions =
       destroyedRobotPositions
         |> List.contains(newRobotPosition)
     if isRobotDestroyed then
-      RobotStatus.Destroyed
+      RobotStatus.Offline
     else
       RobotStatus.Online
 

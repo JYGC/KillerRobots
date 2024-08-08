@@ -3,18 +3,23 @@ namespace KillerRobots.Actions
 module GameStateActions =
   open KillerRobots.Models
   open KillerRobots.Tools
-  open KillerRobots.Screen
   open System
 
   let rec gotoNextGameState (gameState: GameState) =
-    let screen = new Screen(gameState)
-    screen.ClearConsole()
-    screen.Draw()
+    ScreenTools.clearConsole(gameState)
+    ScreenTools.draw(gameState)
 
-    if gameState.Player.Status = PlayerStatus.Alive then
-      computeNextGameState(gameState)
+    let numberOfOnlineRobots =
+      gameState.Robots
+        |> List.filter(fun r -> r.Status = RobotStatus.Online)
+        |> List.length
+
+    if gameState.Player.Status = PlayerStatus.Dead then
+      ScreenTools.printLostMessage gameState
+    elif numberOfOnlineRobots = 0 then
+      ScreenTools.printWonMessage gameState
     else
-      0
+      computeNextGameState(gameState)
 
   and computeNextGameState(gameState: GameState) =
     let keyPress = Console.ReadKey()
