@@ -12,11 +12,11 @@ module ScreenTools =
 
   let clearConsole (gameState: GameState) =
     gameState.Board.ValidXCoordinates
-      |> List.map(fun x ->
-        gameState.Board.ValidYCoordinates
-          |> List.map(fun y ->
-            drawObjects (x, y) ConsoleColor.Black))
-      |> ignore
+    |> List.map(fun x ->
+      gameState.Board.ValidYCoordinates
+      |> List.map(fun y ->
+        drawObjects (x, y) ConsoleColor.Black))
+    |> ignore
   
   let getRobotColor (robot: Robot) =
     match robot.Status with
@@ -30,14 +30,14 @@ module ScreenTools =
 
   let draw (gameState: GameState) =
     gameState.Board.GetWallCoordinates
-      |> List.map(fun c -> drawObjects c ConsoleColor.Gray)
-      |> ignore
+    |> List.map(fun c -> drawObjects c ConsoleColor.Gray)
+    |> ignore
     gameState.Robots
-      |> List.map(fun r ->
-        drawObjects
-          r.Position
-          (getRobotColor r))
-      |> ignore
+    |> List.map(fun r ->
+      drawObjects
+        r.Position
+        (getRobotColor r))
+    |> ignore
     drawObjects
       gameState.Player.Position
       (getPlayerColor gameState.Player)
